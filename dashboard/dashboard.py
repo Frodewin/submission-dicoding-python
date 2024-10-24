@@ -34,7 +34,7 @@ max_date = all_df['order_purchase_timestamp'].max()
 
 with st.sidebar:
     # Menambahkan contoh logo
-    st.image("C:/Users/DELL/OneDrive/Dokumen/Frodewin/submission-dicoding-analysis_python/dashboard/logo_example.png")
+    st.image("dashboard/logo_example.png")
     
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
