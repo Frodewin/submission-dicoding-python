@@ -23,7 +23,7 @@ for column in datetime_columns:
     all_df[column] = pd.to_datetime(all_df[column])
 
 # memanggil koordinat database brazil
-brazil_states = gpd.read_file('C:/Users/DELL/OneDrive/Dokumen/Frodewin/submission-dicoding-analysis_python/geopandas-brasil/shapes/gadm36_BRA_1.shp')
+brazil_states = gpd.read_file('geopandas-brasil/shapes/gadm36_BRA_1.shp')
 
 # ubah kode HASC_1 mengikuti kode dalam CRPOI_df
 brazil_states['HASC_1'] = brazil_states['HASC_1'].str[-2:]
