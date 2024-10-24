@@ -9,7 +9,7 @@ sns.set(style='dark')
 pd.set_option('display.max_columns',None)
 
 # memanggil data sebelumnya yang telah di merge
-all_df = pd.read_csv("C:/Users/DELL/OneDrive/Dokumen/Frodewin/submission-dicoding-analysis_python/dashboard/all_data.csv")
+all_df = pd.read_csv("dashboard/all_data.csv")
 datetime_columns = ['order_purchase_timestamp','order_approved_at','order_delivered_carrier_date',
                     'order_delivered_customer_date','order_estimated_delivery_date','review_answer_timestamp',
                     'shipping_limit_date']
