@@ -36,18 +36,26 @@ with st.sidebar:
     # Menambahkan contoh logo
     st.image("dashboard/logo_example.png")
     
-    # Mengambil start_date & end_date dari date_input
-    start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
+    # Pilih rentang waktu dengan date input
+    date_range = st.date_input(
+        label='Rentang Waktu',
+        min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date]
     )
 
+    # Tambahkan Try-Except untuk menangani error jika hanya satu tanggal yang dipilih
     try:
-        if start_date and end_date:
-            pass
+        # Pastikan `date_range` memiliki dua tanggal (start dan end date)
+        if len(date_range) == 2:
+            start_date, end_date = date_range
+            st.write(f"Menampilkan data dari tanggal {start_date} hingga {end_date}")
+        elif len(date_range) == 1:
+            # Hanya `start_date` yang dipilih
+            start_date = date_range[0]
+            st.write(f"Menampilkan data dari tanggal {start_date} hingga sekarang")
         else:
-            st.write("silahkan pilih rentang waktu yang valid")
+            st.write("Silakan pilih setidaknya satu tanggal.")
     except Exception as e:
         st.error("Terjadi kesalahan dalam pemilihan tanggal. Silakan coba lagi.")
         st.write(f"Error detail: {e}")
