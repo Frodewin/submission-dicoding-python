@@ -43,6 +43,15 @@ with st.sidebar:
         value=[min_date, max_date]
     )
 
+    try:
+        if start_date and end_date:
+            pass
+        else:
+            st.write("silahkan pilih rentang waktu yang valid")
+    except Exception as e:
+        st.error("Terjadi kesalahan dalam pemilihan tanggal. Silakan coba lagi.")
+        st.write(f"Error detail: {e}")
+
 main_df = all_df[(all_df["order_purchase_timestamp"] >= str(start_date)) & (all_df["order_purchase_timestamp"] <= str(end_date))]
 
 # fungsi untuk memfilter data
