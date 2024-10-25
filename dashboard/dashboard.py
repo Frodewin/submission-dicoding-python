@@ -45,20 +45,14 @@ with st.sidebar:
     )
 
     # Tambahkan Try-Except untuk menangani error jika hanya satu tanggal yang dipilih
-    try:
-        # Pastikan `date_range` memiliki dua tanggal (start dan end date)
-        if len(date_range) == 2:
-            start_date, end_date = date_range
-            st.write(f"Menampilkan data dari tanggal {start_date} hingga {end_date}")
-        elif len(date_range) == 1:
-            # Hanya `start_date` yang dipilih
-            start_date = date_range[0]
-            st.write(f"Menampilkan data dari tanggal {start_date} hingga sekarang")
-        else:
-            st.write("Silakan pilih setidaknya satu tanggal.")
-    except Exception as e:
-        st.error("Terjadi kesalahan dalam pemilihan tanggal. Silakan coba lagi.")
-        st.write(f"Error detail: {e}")
+    if len(date_range) == 2:
+        start_date, end_date = date_range
+    elif len(date_range) == 1:
+        start_date = date_range[0]
+        end_date = max_date  # Jika end_date tidak terisi, gunakan max_date
+    else:
+        start_date, end_date = min_date, max_date
+
 
 main_df = all_df[(all_df["order_purchase_timestamp"] >= str(start_date)) & (all_df["order_purchase_timestamp"] <= str(end_date))]
 
